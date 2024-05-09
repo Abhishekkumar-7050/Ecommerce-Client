@@ -1,0 +1,19 @@
+.Navbar{
+    background-color: var(--primary-text-color);
+    height: 80px;
+    z-index: 99;
+    color: white;
+    text-transform: uppercase ;
+    top: 0;
+
+    .nav-container{
+        display:  flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        
+    }
+
+
+}
+
