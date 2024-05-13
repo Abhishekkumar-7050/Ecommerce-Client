@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.scss'
 import { BsCartDash } from "react-icons/bs";
+import SideCart from '../../pages/sideCart/SideCart';
+
 function Navbar() {
+  const [isCartActive , setIsCartActive] = useState();
   return (
     <div className='Navbar'>
       <div className='container nav-container'>
@@ -17,12 +20,13 @@ function Navbar() {
        </div>
        <div className='nav-center'><Link to = "/"><h1 className='banner'>Posterz.</h1></Link>  </div>
        <div className='nav-right'>
-         <div className='nav-cart hover-link '> 
-         <BsCartDash className='icon'/>
+         <div className='nav-cart hover-link ' onClick={() => setIsCartActive(!isCartActive)}> 
+         <BsCartDash className='icon'  />
             <span className='cart-count'>40</span>
          </div>
        </div>
       </div>
+     { isCartActive &&<SideCart onClose = {()=> setIsCartActive(false)}/> }
     </div>
   )
 }
