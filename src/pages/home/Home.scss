@@ -1,6 +1,11 @@
 .Home{
     .collection{
-        margin-top: 80px;
+        margin-top: 60px;
+
+        .heading{
+            font-size: 2rem;
+            color: rgb(130, 29, 224);
+        }
 
         .info{
 
@@ -11,11 +16,12 @@
 
         .content{
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             flex-wrap: wrap;
             align-items: center;
-            gap:30px;
+            gap:40px;
             margin-top:20px;
+            // flex-basis: 1;
         }
 
     }

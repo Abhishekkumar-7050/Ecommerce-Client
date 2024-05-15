@@ -8,6 +8,8 @@ import ProductDetail from './pages/productDetail/ProductDetail'
 
 
 function App() {
+
+  
  
   return (
       <div className='App'>
@@ -15,7 +17,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path = "/" element = {<Home/>} />
-          <Route path = "/products" element = {<Categories/>} />
+          <Route path = "/category/:catagoryId?" element = {<Categories/>} />
           <Route path = "/products/:productId" element = {<ProductDetail/>} />
         </Routes>
         <Footer/>

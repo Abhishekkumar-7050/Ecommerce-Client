@@ -1,21 +1,22 @@
 import React from 'react'
 import './Product.scss'
-import dummyImg  from '../../assets/top_pick.jpg'
+// import dummyImg  from '../../assets/top_pick.jpg'
 import { useNavigate } from 'react-router-dom'
 
-function Products() {
+function Products({product}) {
+    console.log(" top pick is ", product);
     const navigate = useNavigate();
   return (
-    <div className='Product' onClick={ ()=> navigate(`products/pid`)}>
+    <div className='Product' onClick={ ()=> navigate(`/products/${product.attributes.Key}`)}>
         <div className="product-container">
             <div className="product-image">
                 <div className="img-container">
-                    <img src={dummyImg} alt="Poster Img" />
+                    <img src={product?.attributes?.Image?.data?.attributes?.url} alt={product?.attributes?.Title} />
                 </div>
             </div>
             <div className="product-info">
-                <p className="title">Museum-Quality Matte Paper Poster 30x40cm</p>
-                <p className="productPrice">₹ 499</p>
+                <p className="title">{product?.attributes?.Title}</p>
+                <p className="productPrice">₹ { product?.attributes?.Price}</p>
             </div>
         </div>
     </div>

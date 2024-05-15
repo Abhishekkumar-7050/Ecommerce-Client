@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dummyImg  from '../../assets/ProductDetail.jpg';
 import './ProductDetail.scss';
+import { useParams } from "react-router-dom";
+import { axiosClient } from "../../utils/axiosClient";
+import Loader from "../../components/loader/Loader";
 function ProductDetail() {
+  const params = useParams();
+  const [product, setProduct] = useState();
+  const productKey = params.productId;
+  console.log("param is product key on product detail page-> ", params.productId);
   const currValue = 1;
+
+
+
+
+  async function fetchData(){
+     const productDetailRespons = await axiosClient.get(`/products?filters[Key][$eq]=${productKey}&populate=*`);
+     if(productDetailRespons?.data?.data.length >0){
+     setProduct(productDetailRespons?.data?.data[0]);
+      
+     }
+     console.log("Api respons for Product Detail Page",productDetailRespons?.data?.data[0]);
+  }
+
+  useEffect(()=>{
+    setProduct(null);
+    fetchData();
+  },[params]);
+
+  if(!product){
+    return <Loader/>;
+  }
+
+
   return (
     <div className="ProductDetail container">
       <div className="productDetailLeft">
         <div className="imageContainer">
           <div className="imageContent">
-            <img src={dummyImg} alt="Product Detail Image" />
+            {/* <img src={dummyImg} alt="Product Detail Image" /> */}
+            <img src={product?.attributes?.Image?.data?.attributes?.url} alt="Product Detail Image" />
+
           </div>
         </div>
       </div>
@@ -17,16 +49,15 @@ function ProductDetail() {
           <div className="heading">
             <h2>
               {" "}
-              SINCE 7 STORE Lionel Messi Legendary Career Framed Poster For
-              Gifting/For Room Decor/For Football Fans (A4, BLACK)
+          {product?.attributes?.Title}
             </h2>
           </div>
-          <h2>₹ 499</h2>
+          {}
+          <h2>₹ {product?.attributes?.Price}</h2>
           <div className="description">
             <p>
-              Lionel Messi & Cristiano Ronaldo Motivational Quotes Wall
-              Posters,(Football, Sports Poster), Pack of 04 Paper Print (18 inch
-              X 12 inch, Each), Rolled .
+              {product?.attributes?.Description
+}
             </p>
           </div>
           <div className="priceChanger">
@@ -55,7 +86,7 @@ function ProductDetail() {
               </li>
               <li>
                 <h4>
-                  Physical Damage, Wrong, Missing Items: Flipkart may contact
+                  Physical Damage, Wrong, Missing Items: Posterkart may contact
                   you to ascertain the damaged/missing product prior to issuing
                   the replacement.
                 </h4>

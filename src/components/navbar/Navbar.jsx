@@ -11,9 +11,9 @@ function Navbar() {
       <div className='container nav-container'>
        <div className='nav-left'>
       <ul className='link-group'>
-      <li className='hover-link'> <Link className='link' to = "products?category=comic">Comic</Link>  </li>
-      <li className='hover-link'> <Link className='link' to = "products?category=shows">TV Shows</Link>  </li>
-      <li className='hover-link'> <Link className='link' to = "products?category=sports">Sports</Link>  </li>
+      <li className='hover-link'> <Link className='link' to = "category/comics">Comic</Link>  </li>
+      <li className='hover-link'> <Link className='link' to = "category/tv-shows">TV Shows</Link>  </li>
+      <li className='hover-link'> <Link className='link' to = "category/sports">Sports</Link>  </li>
 
       
       </ul>

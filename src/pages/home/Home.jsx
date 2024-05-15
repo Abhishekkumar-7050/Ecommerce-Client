@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import Hero from "../../components/hero/Hero";
 import Category from "../../components/category/Category";
 import Products from "../../components/product/Products";
+import { axiosClient } from "../../utils/axiosClient";
 
 function Home() {
+  const [categories , setCategories] = useState(null);
+  const [topProducts, setTopProducts] =useState( null);
+async function fetchData(){
+  try {
+    const  categoriesRespons = await axiosClient.get('/categories?populate=Image');
+  const topPicksRespons = await axiosClient.get('/products?filters[isTopPick][$eq]=true&populate=Image');
+  // console.log(" Categories respons from Strapie server",categoriesRespons);
+  // console.log(" Top Picks respons from Strapie server",topPicks);
+  setCategories(categoriesRespons.data.data);
+  setTopProducts(topPicksRespons.data.data);
+  } catch (error) {
+     console.log("error is" , error);
+  }
+  
+
+}
+
+ useEffect(()=>{
+fetchData();
+ },[]);
+  
+
   return (
     <div className="Home">
       <Hero />
@@ -18,9 +41,9 @@ function Home() {
         </div>
 
         <div className="content">
-          <Category />
-          <Category />
-          <Category />
+         {categories?.map(category=>
+          <Category key ={category.id} category = {category}/>
+         )}
         </div>
       </section>
 
@@ -31,14 +54,9 @@ function Home() {
         </div>
 
         <div className="content">
-          <Products />
-          <Products />
-          <Products />
-          <Products />
-          <Products />
-          <Products />
-          <Products />
-          <Products />
+         {topProducts?.map(product =>
+          <Products key={product.id} product = {product}/>
+         )}
         </div>
       </section>
       
