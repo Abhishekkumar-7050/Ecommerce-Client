@@ -8,6 +8,7 @@
     z-index: 199;
     display: flex;
     justify-content: flex-end;
+    // overflow: scroll;
 
 
 
@@ -27,6 +28,20 @@
         height: 100vh;
         background-color: white;
         animation: cartSlider 0.30s ease forwards;
+
+
+        .cartEmpty{
+            padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            .cartEmptyIcon{
+                font-size: 3rem;
+                color: var(--secondary-text-color);
+            }
+        }
 
     .sideCartHeading{
         padding: 10px;

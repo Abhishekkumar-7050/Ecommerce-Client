@@ -4,7 +4,7 @@ import './Product.scss'
 import { useNavigate } from 'react-router-dom'
 
 function Products({product}) {
-    console.log(" top pick is ", product);
+    // console.log(" top pick is ", product);
     const navigate = useNavigate();
   return (
     <div className='Product' onClick={ ()=> navigate(`/products/${product.attributes.Key}`)}>
