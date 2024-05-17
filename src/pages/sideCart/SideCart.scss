@@ -28,6 +28,7 @@
         height: 100vh;
         background-color: white;
         animation: cartSlider 0.30s ease forwards;
+        overflow: auto;
 
 
         .cartEmpty{

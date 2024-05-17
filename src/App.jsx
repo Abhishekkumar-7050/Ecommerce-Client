@@ -7,8 +7,8 @@ import Collection from './pages/collection/Collection'
 import ProductDetail from './pages/productDetail/ProductDetail'
 import { useDispatch } from 'react-redux'
 import { fetchCategories } from './redux/slices/categoriesSlice'
-
-
+import Payments from './components/patments/Payments'
+import Company from './components/company/Company'
 function App() {
  const dispatch = useDispatch();
   useEffect(()=>{
@@ -23,6 +23,9 @@ function App() {
           <Route path = "/" element = {<Home/>} />
           <Route path = "/category/:catagoryId?" element = {<Collection/>} />
           <Route path = "/products/:productId" element = {<ProductDetail/>} />
+          <Route path="/payments/:status" element={<Payments />} />
+          <Route path="/company/:data" element={<Company />} />
+
         </Routes>
         <Footer/>
       </div>

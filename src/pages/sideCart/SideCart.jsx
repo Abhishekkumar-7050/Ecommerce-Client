@@ -1,12 +1,13 @@
 import React from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsCart3 } from "react-icons/bs";
-
+import {loadStripe} from '@stripe/stripe-js';
 import CartItem from "../../components/cartItem/CartItem";
 import "./SideCart.scss";
 import { useSelector } from "react-redux";
+ import {axiosClient} from '../../utils/axiosClient'
 function SideCart({ onClose }) {
-  // let totalPrice = `₹ ${5000}`;
+  
 
   const cart = useSelector((state) => state.cartReducer.cart);
   let totalPrice = 0;
@@ -15,9 +16,31 @@ function SideCart({ onClose }) {
   });
   const isCartEmpty = cart.length === 0;
 
-  // console.log("total price",totalPrice );
+  
 
-  function handleCheckOutbuton() {}
+  
+
+  async function handleCheckOutbuton() {
+    try {
+        const response = await axiosClient.post('/orders', {
+            products: cart
+          });
+
+        const stripe = await loadStripe(`${import.meta.env.VITE_APP_STRIPE_PUBLISHABLE_KEY}`);
+        
+        const data = await stripe.redirectToCheckout({
+            sessionId: response.data.stripeId
+        })
+
+       console.log('stripe data', data);
+
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
+
 
   return (
     <div className="SideCart">

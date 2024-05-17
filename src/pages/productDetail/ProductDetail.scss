@@ -1,7 +1,8 @@
 .ProductDetail{
- height: 80vh;
+//  height: 80vh;
  
  display: flex;
+
 
 .productDetailLeft{
     flex: 0.8;
@@ -87,5 +88,23 @@
 
 
 }
+
+}
+
+
+@media screen and (max-width :768px){
+
+    .ProductDetail{
+        display: flex;
+        flex-direction: column;
+        // flex-wrap: wrap;
+
+        .productDetailRight{
+            .top{
+                gap: 20px;
+            }
+        }
+    }
+
 
 }
