@@ -9,7 +9,7 @@
     margin-top: 20px;
     // margin-bottom: 60px;
     // height: 30vh;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     // position: relative;
     .categoriesTopleft {
       flex: 3;
@@ -90,7 +90,7 @@
 
 
 @media screen and (max-width:768px) {
-    .Category{
+    .Categories{
         width: 100%;
         flex-direction: column;
         .categoriesTop{
