@@ -2,6 +2,7 @@
   display: flex;
 //   flex-wrap: wrap;
   flex-direction: column;
+  gap: 20px;
   .categoriesTop {
     // border: 1px solid gray;
     display: flex;
@@ -29,7 +30,8 @@
       flex-direction: column;
       gap: 5px;
       justify-content: center;
-      align-items: end;
+    //   align-items: end;
+    align-items: center;
 
       .sort {
         // margin-bottom: 10px;
@@ -76,6 +78,7 @@
     .categoriesBottomRight {
       flex: 3;
       // border: 1px solid grey;
+      
 
       .categoriesProduct {
         display: flex;
