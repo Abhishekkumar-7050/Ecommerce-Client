@@ -34,7 +34,7 @@ function Payments() {
         <div className="Payments">
             <div className="icon">{infoData[status].icon}</div>
             <h2 className="message">{infoData[status].message}</h2>
-            <button className="primaryBtn" onClick={()=> navigate('/')}>{infoData[status].cta}</button>
+            <button className="primary-btn" onClick={()=> navigate('/')}>{infoData[status].cta}</button>
         </div>
     );
 }
