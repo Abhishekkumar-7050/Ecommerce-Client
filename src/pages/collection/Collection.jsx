@@ -11,7 +11,7 @@ function Collection() {
   const [products, setProducts] = useState();
   const [catagoryId, setCategoryId] = useState();
 
-  console.log("params is", params);
+  // console.log("params is", params);
 
   // const catagoryList = [
   //   {
@@ -55,7 +55,7 @@ function Collection() {
       );
     }
     setProducts(productResponse?.data?.data);
-  console.log("productResponse",productResponse?.data?.data);
+  // console.log("productResponse",productResponse?.data?.data);
    
   }
 

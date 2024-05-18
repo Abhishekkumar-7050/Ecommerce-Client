@@ -20,7 +20,7 @@ async function fetchData(){
   // setCategories(categoriesRespons.data.data);
   setTopProducts(topPicksRespons.data.data);
   } catch (error) {
-     console.log("error is" , error);
+    //  console.log("error is" , error);
   }
   
 

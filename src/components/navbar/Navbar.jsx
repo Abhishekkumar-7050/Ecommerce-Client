@@ -42,7 +42,7 @@ cart.forEach(item => {
        <div className='nav-right'>
          <div className='nav-cart hover-link ' onClick={() => setIsCartActive(!isCartActive)}> 
          <BsCartDash className='icon'  />
-           {(totalItem > 0)&& <span className='cart-count'>{totalItem}</span>}
+           {(totalItem > 0)&& <span className='cart-count center '>{totalItem}</span>}
          </div>
        </div>
       </div>
